@@ -1,0 +1,44 @@
+.editClubContainer {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.editClubForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.editClubForm input,
+.editClubForm textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.editClubForm button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editClubForm button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}

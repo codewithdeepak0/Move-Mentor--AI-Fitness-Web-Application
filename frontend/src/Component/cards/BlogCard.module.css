@@ -1,0 +1,34 @@
+.blogCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow-y: scroll;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.blogCard:hover {
+  transform: scale(1.05);
+}
+
+.blogCard__image {
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+}
+
+.blogCard__content {
+  padding: 10px;
+}
+
+.blogCard__title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.blogCard__author,
+.blogCard__description {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  color: #555;
+}

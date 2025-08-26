@@ -1,0 +1,44 @@
+.createClubContainer {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.createClubForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.createClubForm input,
+.createClubForm textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.createClubForm button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.createClubForm button:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}

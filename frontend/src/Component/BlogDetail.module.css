@@ -1,0 +1,35 @@
+.blogDetails {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow-y: scroll;
+  scrollbar-width: 0;
+}
+
+.blogDetails::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.blogDetails__image {
+  width: 100%;
+  height: 34rem;
+  border-radius: 8px;
+}
+
+.blogDetails__title {
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.blogDetails__author,
+.blogDetails__category,
+.blogDetails__content {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.boldText {
+  font-weight: bold;
+}

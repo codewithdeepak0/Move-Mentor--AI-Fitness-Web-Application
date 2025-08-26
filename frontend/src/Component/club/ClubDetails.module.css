@@ -1,0 +1,96 @@
+.clubDetailsContainer {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  margin-top: 10px;
+}
+
+ul {
+  margin-top: 15px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.joinClubForm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.success {
+  margin-top: 10px;
+  color: green;
+}
+
+.editBtn {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  background-color: #218838;
+}
+
+.deleteBtn {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.deleteBtn:hover {
+  background-color: #c82333;
+}
+
+
+.leaveBtn {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.leaveBtn:hover {
+  background-color: #c82333;
+}

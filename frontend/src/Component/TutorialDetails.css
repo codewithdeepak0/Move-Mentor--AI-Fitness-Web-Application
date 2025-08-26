@@ -1,0 +1,34 @@
+.tutorial-details {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow-y: scroll;
+  scrollbar-width: 0;
+
+}
+
+.tutorial-details::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+
+.tutorial-details__image {
+  width: 100%;
+  height: 34rem;
+  border-radius: 8px;
+
+}
+
+.tutorial-details__title {
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.tutorial-details__author,
+.tutorial-details__category,
+.tutorial-details__content {
+  font-size: 1rem;
+  margin: 10px 0;
+}

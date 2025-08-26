@@ -1,0 +1,43 @@
+.blogsContainer {
+  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+.blogsHeading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.blogsHeader{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addBlogButton {
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 22rem; 
+ 
+  
+}
+
+.addBlogButton:hover {
+  background-color: #0056b3;
+}
+
+.blogsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}

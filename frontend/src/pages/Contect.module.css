@@ -1,0 +1,39 @@
+.containers{
+  display: flex;
+  overflow-y: scroll;
+@media (max-width : 700px)
+{
+  flex-direction: column;
+}
+ 
+}
+
+.about{
+  @media (max-width : 700px){
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+}
+
+
+.socialIcon {
+  color: #0a66c2; /* LinkedIn primary color */
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.socialIcon:hover {
+  color: #0056b3; /* Darker shade for hover */
+  transform: scale(1.2); /* Slightly enlarges icon on hover */
+}
+
+.socialIcon .fab.fa-linkedin {
+  color: #0a66c2;
+}
+
+.socialIcon .fab.fa-github {
+  color: #333;
+}
+
+.socialIcon .fas.fa-envelope {
+  color: #d44638; /* Gmail red color */
+}

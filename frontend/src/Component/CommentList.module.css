@@ -1,0 +1,38 @@
+.commentList {
+  margin-top: 20px;
+}
+
+.commentList h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.commentItem {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.commentText {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.commentMeta {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.commentUser {
+  font-weight: bold;
+}
+
+.commentDate {
+  margin-left: 10px;
+}
+
+.noComments {
+  font-size: 1rem;
+  color: #888;
+  text-align: center;
+}
