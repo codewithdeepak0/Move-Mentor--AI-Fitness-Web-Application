@@ -20,7 +20,7 @@ const AddTutorial = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTutorial((prev) => ({ ...prev, [name]: value }));
-  }; 
+  };
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
@@ -28,19 +28,18 @@ const AddTutorial = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!image) {
       alert("Please select an image.");
       return;
     }
-  
+
     try {
       setLoading(true);
       const formData = new FormData();
       formData.append("image", image); // Attach the image
       formData.append("data", JSON.stringify(tutorial)); // Attach other data
-     
-  
+
       const response = await axios.post(
         "http://localhost:3000/api/tutorials",
         formData,
@@ -48,10 +47,10 @@ const AddTutorial = () => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-  
+
       alert("Tutorial added successfully!");
       navigate("/tutorials");
-  
+
       // Reset form
       setTutorial({
         title: "",
@@ -65,14 +64,15 @@ const AddTutorial = () => {
       setImage(null);
     } catch (error) {
       const errorMessage =
-        error.response?.data?.error || error.response?.statusText || "An unknown error occurred.";
+        error.response?.data?.error ||
+        error.response?.statusText ||
+        "An unknown error occurred.";
       console.error("Error adding tutorial:", errorMessage);
       alert(`Failed to add tutorial. Reason: ${errorMessage}`);
     } finally {
       setLoading(false);
     }
   };
-  
 
   return (
     <div className={styles.addTutorial}>

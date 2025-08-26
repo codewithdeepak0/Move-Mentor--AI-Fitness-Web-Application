@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const challengeSchema = new mongoose.Schema({
   title: {
@@ -10,7 +10,7 @@ const challengeSchema = new mongoose.Schema({
   },
   difficulty: {
     type: String,
-    enum: ['Easy', 'Medium', 'Hard'],
+    enum: ["Easy", "Medium", "Hard"],
     required: true,
   },
   startDate: {
@@ -21,15 +21,17 @@ const challengeSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  participants: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-  }],
+  participants: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true,
-  }
+  },
 });
 
-module.exports = mongoose.model('Challenge', challengeSchema);
+module.exports = mongoose.model("Challenge", challengeSchema);

@@ -6,19 +6,16 @@
   border-radius: 8px;
   overflow-y: scroll;
   scrollbar-width: 0;
-
 }
 
 .tutorial-details::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
 
-
 .tutorial-details__image {
   width: 100%;
   height: 34rem;
   border-radius: 8px;
-
 }
 
 .tutorial-details__title {

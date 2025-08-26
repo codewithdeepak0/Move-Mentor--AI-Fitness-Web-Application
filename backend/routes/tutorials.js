@@ -1,6 +1,13 @@
 const express = require("express");
-const { getAllTutorials, getTutorialById, addTutorial } = require("../controllers/tutorial.js");
-const {  createMulterUpload,processimages,} = require("../middlewere/multer.js");
+const {
+  getAllTutorials,
+  getTutorialById,
+  addTutorial,
+} = require("../controllers/tutorial.js");
+const {
+  createMulterUpload,
+  processimages,
+} = require("../middlewere/multer.js");
 
 const router = express.Router();
 
@@ -11,6 +18,6 @@ router.get("/", getAllTutorials);
 router.get("/:id", getTutorialById);
 
 // Add a new tutorial with image upload
-router.post("/",createMulterUpload(),processimages, addTutorial);
+router.post("/", createMulterUpload(), processimages, addTutorial);
 
 module.exports = router;

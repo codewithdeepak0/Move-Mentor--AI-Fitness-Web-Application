@@ -85,28 +85,28 @@
 
 // export default ClubList;
 
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './ClubList.css'; // Import the updated CSS
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./ClubList.css"; // Import the updated CSS
+import axios from "axios";
 
 const ClubList = () => {
   const [clubs, setClubs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchClubs = async () => {
       try {
-        const token = localStorage.getItem('token'); // Retrieve JWT token
-        const response = await axios.get('http://localhost:3000/api/clubs', {
+        const token = localStorage.getItem("token"); // Retrieve JWT token
+        const response = await axios.get("http://localhost:3000/api/clubs", {
           headers: { Authorization: `Bearer ${token}` }, // Provide token in header
         });
 
         setClubs(response.data);
       } catch (err) {
-        setError('Failed to load clubs.');
+        setError("Failed to load clubs.");
       } finally {
         setLoading(false);
       }
@@ -139,7 +139,7 @@ const ClubList = () => {
           <h2 className="clubsHeading text-center">Clubs</h2>
           <button
             className="addClubButton mb-5"
-            onClick={() => navigate('/create-club')}
+            onClick={() => navigate("/create-club")}
           >
             + Add Club
           </button>
@@ -154,7 +154,7 @@ const ClubList = () => {
               <div className="cardContent">
                 <h3 className="clubTitle">{club.name}</h3>
                 <p className="clubAdmin">
-                  <strong>Admin:</strong> {club.admin?.name || 'Unknown'}
+                  <strong>Admin:</strong> {club.admin?.name || "Unknown"}
                 </p>
                 <p className="clubDescription">{club.description}</p>
               </div>

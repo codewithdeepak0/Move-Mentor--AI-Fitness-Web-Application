@@ -11,7 +11,10 @@ export const userSlice = createSlice({
     loginSuccess: (state, action) => {
       state.currentUser = action.payload.user;
       // Store both the user object and token in localStorage
-      localStorage.setItem("fittrack-app-user", JSON.stringify(action.payload.user));
+      localStorage.setItem(
+        "fittrack-app-user",
+        JSON.stringify(action.payload.user)
+      );
       localStorage.setItem("fittrack-app-token", action.payload.token);
     },
     logout: (state) => {

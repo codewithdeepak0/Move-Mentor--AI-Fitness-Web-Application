@@ -1,6 +1,6 @@
 const Blog = require("../models/Blogs.js");
-const {verifyToken} = require("../middlewere/VerifyToken.js");
-const User =  require("../models/UserModel.js")
+const { verifyToken } = require("../middlewere/VerifyToken.js");
+const User = require("../models/UserModel.js");
 
 exports.getAllBlogs = async (req, res) => {
   const { page = 1, limit = 20, category, tags } = req.query;
@@ -16,9 +16,13 @@ exports.getAllBlogs = async (req, res) => {
       .sort({ createdAt: -1 });
     const total = await Blog.countDocuments(query);
 
-    res.status(200).json({ blogs, total, page: parseInt(page), limit: parseInt(limit) });
+    res
+      .status(200)
+      .json({ blogs, total, page: parseInt(page), limit: parseInt(limit) });
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch blogs.", message: err.message });
+    res
+      .status(500)
+      .json({ error: "Failed to fetch blogs.", message: err.message });
   }
 };
 
@@ -40,7 +44,6 @@ exports.getBlogById = async (req, res) => {
 
 // Create a new blog
 exports.createBlog = async (req, res) => {
-
   const blogData = req.body.data ? JSON.parse(req.body.data) : null;
 
   const { title, content, author, category, tags } = blogData;
@@ -50,7 +53,7 @@ exports.createBlog = async (req, res) => {
       title,
       content,
       author,
-      category, 
+      category,
       tags: Array.isArray(tags) ? tags : tags ? tags.split(",") : [],
       image: req.url || null, // Cloudinary URL
     });
@@ -58,14 +61,14 @@ exports.createBlog = async (req, res) => {
     const savedBlog = await newBlog.save();
     res.status(201).json(savedBlog);
   } catch (err) {
-    res.status(500).json({ error: "Failed to create the blog.", message: err.message });
+    res
+      .status(500)
+      .json({ error: "Failed to create the blog.", message: err.message });
   }
 };
 
 // Update a blog by ID
 exports.updateBlog = async (req, res) => {
-
- 
   const { title, content, author, category, tags } = req.body;
 
   try {
@@ -86,7 +89,9 @@ exports.updateBlog = async (req, res) => {
 
     res.status(200).json(updatedBlog);
   } catch (err) {
-    res.status(500).json({ error: "Failed to update the blog.", message: err.message });
+    res
+      .status(500)
+      .json({ error: "Failed to update the blog.", message: err.message });
   }
 };
 
@@ -116,10 +121,12 @@ exports.deleteBlog = async (req, res) => {
     }
 
     console.log("Blog author:", blog.author, "Logged in user:", user.username);
-    
+
     // Check if the current user is the author of the blog
     if (blog.author !== user.name) {
-      return res.status(403).json({ message: "You are not authorized to delete this blog" });
+      return res
+        .status(403)
+        .json({ message: "You are not authorized to delete this blog" });
     }
 
     // Delete the blog
@@ -132,28 +139,21 @@ exports.deleteBlog = async (req, res) => {
   }
 };
 
-
-
-
-
-
 // Add a comment to a blog
 exports.addCommentToBlog = async (req, res) => {
   const { blogId, comment, user } = req.body;
-  
+
   try {
     if (!comment || !user || !blogId) {
       return res.status(400).json({ message: "Missing required fields." });
     }
 
-    
     const newComment = {
       user,
       comment,
       date: new Date(),
     };
 
-    
     const blog = await Blog.findById(blogId);
     if (!blog) {
       return res.status(404).json({ message: "Blog not found" });
@@ -162,12 +162,9 @@ exports.addCommentToBlog = async (req, res) => {
     blog.comments.push(newComment);
     await blog.save();
 
-    
-    res.status(201).json(newComment); 
+    res.status(201).json(newComment);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 };
-
-

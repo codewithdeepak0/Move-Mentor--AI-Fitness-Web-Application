@@ -7,9 +7,9 @@ const API = axios.create({
 // Add a request interceptor to include the token in all requests
 API.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('fittrack-app-token');
+    const token = localStorage.getItem("fittrack-app-token");
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
   },

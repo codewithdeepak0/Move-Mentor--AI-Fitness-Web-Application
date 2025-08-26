@@ -255,8 +255,8 @@ const ClubDetails = () => {
 
       if (response.status === 200) {
         setSuccess("You have left the club.");
-        setMembers((prev) =>
-          prev.filter((m) => m.name !== loggedInUser) // Remove member by name
+        setMembers(
+          (prev) => prev.filter((m) => m.name !== loggedInUser) // Remove member by name
         );
       }
     } catch (err) {
@@ -337,9 +337,7 @@ const ClubDetails = () => {
           </div>
         </div>
 
-        {success && (
-          <div className="alert alert-success mt-3">{success}</div>
-        )}
+        {success && <div className="alert alert-success mt-3">{success}</div>}
         {error && <div className="alert alert-danger mt-3">{error}</div>}
       </div>
     </div>

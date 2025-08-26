@@ -1,9 +1,13 @@
 import React from "react";
 import styles from "./CommentList.module.css";
 
-const CommentList = ({ comments ,  }) => {
+const CommentList = ({ comments }) => {
   if (!comments || comments.length === 0) {
-    return <p className={styles.noComments}>No comments yet. Be the first to comment!</p>;
+    return (
+      <p className={styles.noComments}>
+        No comments yet. Be the first to comment!
+      </p>
+    );
   }
 
   return (
@@ -14,7 +18,9 @@ const CommentList = ({ comments ,  }) => {
           <li key={comment._id} className={styles.commentItem}>
             <p className={styles.commentText}>{comment.comment}</p>
             <p className={styles.commentMeta}>
-              <span className={styles.commentUser}>By: {comment.user.name || "Anonymous"}</span>
+              <span className={styles.commentUser}>
+                By: {comment.user.name || "Anonymous"}
+              </span>
               <span className={styles.commentDate}>
                 {new Date(comment.date).toLocaleDateString()}
               </span>
@@ -27,4 +33,3 @@ const CommentList = ({ comments ,  }) => {
 };
 
 export default CommentList;
-

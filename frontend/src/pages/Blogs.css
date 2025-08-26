@@ -11,7 +11,7 @@
   margin-bottom: 20px;
 }
 
-.blogsHeader{
+.blogsHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,9 +27,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  max-width: 22rem; 
- 
-  
+  max-width: 22rem;
 }
 
 .addBlogButton:hover {

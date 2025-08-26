@@ -35,9 +35,8 @@
 //   }
 // };
 
-
-const axios = require('axios');
-require('dotenv').config();
+const axios = require("axios");
+require("dotenv").config();
 
 exports.ChatBot = async (req, res) => {
   const { message } = req.body;

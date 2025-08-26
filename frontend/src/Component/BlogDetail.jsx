@@ -11,9 +11,9 @@ const BlogDetails = () => {
   const [comments, setComments] = useState([]); // Store comments separately
   const navigate = useNavigate();
 
-  // accesss currrentUser friom redux store. 
+  // accesss currrentUser friom redux store.
   const currentUser = JSON.parse(localStorage.getItem("fittrack-app-user"));
-  console.log(currentUser)
+  console.log(currentUser);
   useEffect(() => {
     const fetchBlogDetails = async () => {
       try {
@@ -35,27 +35,26 @@ const BlogDetails = () => {
       alert("You must be logged in to add a comment.");
       return;
     }
-    
+
     const token = localStorage.getItem("fittrack-app-token");
     console.log(token);
 
-
-
     try {
-
-      
-      const response = await fetch(`http://localhost:3000/api/blogs/${id}/comments`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          ...newComment,
-          user: currentUser._id, // Pass user ID from currentUser
-          blogId: blog._id,
-        }),
-      });
+      const response = await fetch(
+        `http://localhost:3000/api/blogs/${id}/comments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            ...newComment,
+            user: currentUser._id, // Pass user ID from currentUser
+            blogId: blog._id,
+          }),
+        }
+      );
 
       if (response.ok) {
         const savedComment = await response.json();
@@ -64,10 +63,7 @@ const BlogDetails = () => {
     } catch (error) {
       console.error("Error adding comment:", error);
     }
-
-
-  }
-
+  };
 
   const handleDelete = async () => {
     if (!currentUser) {
@@ -82,7 +78,7 @@ const BlogDetails = () => {
     try {
       const token = localStorage.getItem("fittrack-app-token");
 
-      console.log("token for deleting the blog : "  , token)
+      console.log("token for deleting the blog : ", token);
 
       const response = await fetch(`http://localhost:3000/api/blogs/${id}`, {
         method: "DELETE",
@@ -103,13 +99,11 @@ const BlogDetails = () => {
     }
   };
 
-
-
   if (!blog) {
     return <div>Loading...</div>;
   }
 
-  console.log(blog)
+  console.log(blog);
 
   return (
     <div className={styles.blogDetails}>
@@ -141,18 +135,19 @@ const BlogDetails = () => {
       >
         Edit
       </button>
-     
+
       {currentUser && currentUser.name === blog.author && (
-        <button className="btn btn-danger ms-5 "  onClick={handleDelete} style={{width : "12rem"}}>
+        <button
+          className="btn btn-danger ms-5 "
+          onClick={handleDelete}
+          style={{ width: "12rem" }}
+        >
           Delete Blog
         </button>
       )}
 
-
-      
       <CommentList comments={comments} />
 
-      
       {currentUser ? (
         <AddCommentForm onAddComment={handleAddComment} blogId={id} />
       ) : (

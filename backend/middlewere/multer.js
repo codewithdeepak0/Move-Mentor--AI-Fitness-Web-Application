@@ -1,14 +1,14 @@
-const multer = require('multer');
-const stream = require('stream');
-require("dotenv").config()
+const multer = require("multer");
+const stream = require("stream");
+require("dotenv").config();
 
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,     
+  api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
-  cloud_url : process.env.CLOUDINARY_URL
+  cloud_url: process.env.CLOUDINARY_URL,
 });
 
 // Function to create multer upload middleware
@@ -17,7 +17,7 @@ const createMulterUpload = () => {
   const storage = multer.memoryStorage();
   console.log("this is upload");
   // Create multer upload instance for single file
-  return multer({ storage: storage }).single('image'); // 'image' matches the form input name
+  return multer({ storage: storage }).single("image"); // 'image' matches the form input name
 };
 
 // Helper function to upload file buffer to Cloudinary
@@ -27,8 +27,8 @@ const uploadToCloudinary = (buffer) => {
     console.log("before cloud");
     const uploadStream = cloudinary.uploader.upload_stream(
       {
-        folder: 'uploads', // Optional: specify a folder in Cloudinary
-        resource_type: 'auto', // Automatically detect file type
+        folder: "uploads", // Optional: specify a folder in Cloudinary
+        resource_type: "auto", // Automatically detect file type
       },
       (error, result) => {
         if (error) {
@@ -50,7 +50,7 @@ const uploadToCloudinary = (buffer) => {
 const processimages = async (req, res, next) => {
   req.mediaData = [];
   console.log("this is precess");
-  
+
   try {
     if (!req.file) {
       next();
@@ -63,7 +63,7 @@ const processimages = async (req, res, next) => {
     const result = await uploadToCloudinary(buffer);
 
     // Push the Cloudinary URL to req.mediaData
-    req.url=result.secure_url
+    req.url = result.secure_url;
 
     console.log("req media data", req.mediaData);
     next();

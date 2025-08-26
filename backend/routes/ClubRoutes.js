@@ -1,41 +1,44 @@
-const {CreateClub , FetchAllClubs , GetById , JoinClub , LeaveClub , DeleteClub, fetchAllMembers, EditClub } = require("../controllers/Club");
-const express  =  require("express");
-const {verifyToken} = require("../middlewere/VerifyToken");
-const router =   express.Router();
+const {
+  CreateClub,
+  FetchAllClubs,
+  GetById,
+  JoinClub,
+  LeaveClub,
+  DeleteClub,
+  fetchAllMembers,
+  EditClub,
+} = require("../controllers/Club");
+const express = require("express");
+const { verifyToken } = require("../middlewere/VerifyToken");
+const router = express.Router();
 
+// create club
 
-// create club 
+router.post("/", verifyToken, CreateClub);
 
-router.post("/" , verifyToken , CreateClub);
+// Fetch all  clubs
 
-// Fetch all  clubs 
+router.get("/", FetchAllClubs);
 
-router.get("/" ,  FetchAllClubs);
+// get  club by id
 
-// get  club by id 
-
-router.get("/:id" , verifyToken , GetById );
+router.get("/:id", verifyToken, GetById);
 
 // join club
 
-router.put("/:id/join" , verifyToken , JoinClub);
+router.put("/:id/join", verifyToken, JoinClub);
 
-// Leave club 
-router.put("/:id/leave" , verifyToken , LeaveClub);
+// Leave club
+router.put("/:id/leave", verifyToken, LeaveClub);
 
 //  delete club (Admin only)
 
-router.delete("/:id" , verifyToken , DeleteClub);
-
+router.delete("/:id", verifyToken, DeleteClub);
 
 // fetch all member of the club
-router.get("/:id/members" , verifyToken , fetchAllMembers);
+router.get("/:id/members", verifyToken, fetchAllMembers);
 
-// edit the clubs 
-router.put("/:id" , verifyToken , EditClub);
-
-
+// edit the clubs
+router.put("/:id", verifyToken, EditClub);
 
 module.exports = router;
-
-

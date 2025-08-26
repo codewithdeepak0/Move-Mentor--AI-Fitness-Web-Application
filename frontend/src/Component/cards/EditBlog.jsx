@@ -113,8 +113,7 @@ const EditBlog = () => {
             className="form-control"
             accept="image/*"
             onChange={handleImageChange}
-
-            required 
+            required
           />
         </div>
 

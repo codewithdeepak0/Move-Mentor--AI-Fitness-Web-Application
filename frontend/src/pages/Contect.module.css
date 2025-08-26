@@ -1,20 +1,17 @@
-.containers{
+.containers {
   display: flex;
   overflow-y: scroll;
-@media (max-width : 700px)
-{
-  flex-direction: column;
-}
- 
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 }
 
-.about{
-  @media (max-width : 700px){
+.about {
+  @media (max-width: 700px) {
     font-size: 1.3rem;
     padding: 1rem;
   }
 }
-
 
 .socialIcon {
   color: #0a66c2; /* LinkedIn primary color */

@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import styles from './EditClub.module.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import styles from "./EditClub.module.css";
 
 const EditClub = () => {
   const { id } = useParams(); // Get club ID from URL
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
     const fetchClubDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/clubs/${id}`);
+        const response = await axios.get(
+          `http://localhost:3000/api/clubs/${id}`
+        );
         setName(response.data.name);
         setDescription(response.data.description);
       } catch (err) {
-        setError('Failed to load club details.');
+        setError("Failed to load club details.");
       }
     };
     fetchClubDetails();
@@ -33,17 +35,17 @@ const EditClub = () => {
         { name, description },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
 
       if (response.status === 200) {
-        setSuccess('Club updated successfully!');
-        setTimeout(() => navigate('/clubs'), 2000); // Redirect after success
+        setSuccess("Club updated successfully!");
+        setTimeout(() => navigate("/clubs"), 2000); // Redirect after success
       }
     } catch (err) {
-      setError(err.response?.data?.error || 'Failed to update club.');
+      setError(err.response?.data?.error || "Failed to update club.");
     }
   };
 

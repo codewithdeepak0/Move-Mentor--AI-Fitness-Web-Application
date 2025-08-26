@@ -122,7 +122,8 @@ const Workouts = () => {
                   ))
                 ) : (
                   <Message>
-                    No workouts today! Stay motivated and keep pushing your limits! 💪
+                    No workouts today! Stay motivated and keep pushing your
+                    limits! 💪
                   </Message>
                 )}
               </CardWrapper>

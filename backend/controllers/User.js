@@ -30,7 +30,7 @@ const UserRegister = async (req, res, next) => {
     const token = jwt.sign({ id: createdUser._id }, process.env.JWT, {
       expiresIn: "60m",
     });
-    
+
     console.log("this is the token in backend " + token);
     return res.status(200).json({ token, user });
   } catch (error) {
@@ -56,8 +56,7 @@ const UserLogin = async (req, res, next) => {
       expiresIn: "7days",
     });
 
-    
-    console.log("this is the token in login at  backend :" , token )
+    console.log("this is the token in login at  backend :", token);
 
     return res.status(200).json({ token, user });
   } catch (error) {
@@ -231,7 +230,6 @@ const getWorkoutsByDate = async (req, res, next) => {
   }
 };
 
-
 const addWorkout = async (req, res, next) => {
   try {
     const userId = req.user && req.user.id;
@@ -346,8 +344,7 @@ const parseWorkoutLine = (parts) => {
 
 const calculateCaloriesBurnt = (workout) => {
   return (
-    (workout.sets + workout.reps + workout.weight + workout.time) *
-    1.5 // You can adjust the calorie burn rate as needed
+    (workout.sets + workout.reps + workout.weight + workout.time) * 1.5 // You can adjust the calorie burn rate as needed
   );
 };
 

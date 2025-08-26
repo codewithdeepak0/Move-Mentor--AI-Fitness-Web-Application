@@ -46,14 +46,13 @@ const SignIn = () => {
       await UserSignIn({ email, password })
         .then((res) => {
           dispatch(loginSuccess(res.data));
-          const token = res.data.token ;
-          localStorage.setItem('fittrack-app-token', token);
+          const token = res.data.token;
+          localStorage.setItem("fittrack-app-token", token);
           alert("Login Success");
           setLoading(false);
           setButtonDisabled(false);
 
-          console.log("this is the token into frontend :" , token);
-
+          console.log("this is the token into frontend :", token);
         })
         .catch((err) => {
           alert(err.response.data.message);

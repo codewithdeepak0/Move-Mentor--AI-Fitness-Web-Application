@@ -10,7 +10,7 @@ const AddBlog = () => {
     author: "",
     content: "",
     category: "",
-     tags : "",
+    tags: "",
   });
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ const AddBlog = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setblog((prev) => ({ ...prev, [name]: value }));
-  }; 
+  };
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
@@ -26,19 +26,18 @@ const AddBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!image) {
       alert("Please select an image.");
       return;
     }
-  
+
     try {
       setLoading(true);
       const formData = new FormData();
       formData.append("image", image); // Attach the image
       formData.append("data", JSON.stringify(blog)); // Attach other data
-     
-  
+
       const response = await axios.post(
         "http://localhost:3000/api/blogs",
         formData,
@@ -46,10 +45,10 @@ const AddBlog = () => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-  
+
       alert("Tutorial added successfully!");
       navigate("/blogs");
-  
+
       // Reset form
       setTutorial({
         title: "",
@@ -62,14 +61,15 @@ const AddBlog = () => {
       setImage(null);
     } catch (error) {
       const errorMessage =
-        error.response?.data?.error || error.response?.statusText || "An unknown error occurred.";
+        error.response?.data?.error ||
+        error.response?.statusText ||
+        "An unknown error occurred.";
       console.error("Error adding blog :", errorMessage);
       alert(`Failed to add blog. Reason: ${errorMessage}`);
     } finally {
       setLoading(false);
     }
   };
-  
 
   return (
     <div className={styles.addTutorial}>
@@ -135,8 +135,7 @@ const AddBlog = () => {
             required
           />
         </div>
-        
-       
+
         <div className={styles.formGroup}>
           <label htmlFor="image">Image</label>
           <input

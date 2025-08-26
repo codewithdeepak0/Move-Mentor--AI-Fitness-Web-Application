@@ -22,7 +22,11 @@ const Chatbot = () => {
     // Add user's message to chat
     const newChat = [
       ...chat,
-      { sender: "user", text: message, timestamp: new Date().toLocaleTimeString() },
+      {
+        sender: "user",
+        text: message,
+        timestamp: new Date().toLocaleTimeString(),
+      },
     ];
     setChat(newChat);
     setMessage("");
@@ -46,7 +50,11 @@ const Chatbot = () => {
       setTimeout(() => {
         setChat([
           ...newChat,
-          { sender: "ai", text: data.reply, timestamp: new Date().toLocaleTimeString() },
+          {
+            sender: "ai",
+            text: data.reply,
+            timestamp: new Date().toLocaleTimeString(),
+          },
         ]);
         setIsTyping(false);
       }, 1000); // Simulated delay
@@ -74,7 +82,10 @@ const Chatbot = () => {
           <div className={styles.chatContainer}>
             <div className={`${styles.chatHeader} text-center`}>
               <h2>Coachly</h2>
-              <button className={`${styles.closeButton} text-end`} onClick={toggleModal}>
+              <button
+                className={`${styles.closeButton} text-end`}
+                onClick={toggleModal}
+              >
                 ✕
               </button>
             </div>
@@ -82,7 +93,11 @@ const Chatbot = () => {
               {chat.map((msg, index) => (
                 <div
                   key={index}
-                  className={msg.sender === "user" ? styles.userMsgContainer : styles.aiMsgContainer}
+                  className={
+                    msg.sender === "user"
+                      ? styles.userMsgContainer
+                      : styles.aiMsgContainer
+                  }
                 >
                   <p className={styles.chatBubble}>{msg.text}</p>
                   <span className={styles.timestamp}>{msg.timestamp}</span>

@@ -10,7 +10,7 @@ const TutorialList = () => {
   useEffect(() => {
     const fetchTutorials = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/tutorials"); 
+        const response = await fetch("http://localhost:3000/api/tutorials");
         const data = await response.json();
         setTutorials(data);
       } catch (error) {
@@ -24,8 +24,8 @@ const TutorialList = () => {
   return (
     <div className="tutorials-container">
       <div className="tutorials-header">
-      <h1 className="tutorials-heading">Tutorials</h1>
-      <button
+        <h1 className="tutorials-heading">Tutorials</h1>
+        <button
           className="add-tutorial-button mb-5"
           onClick={() => navigate("/add-tutorial")}
         >

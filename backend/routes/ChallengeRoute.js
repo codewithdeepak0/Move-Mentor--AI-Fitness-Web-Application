@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Challenge = require('../models/Challenge');
-const {verifyToken}  =  require("../middlewere/VerifyToken")
+const Challenge = require("../models/Challenge");
+const { verifyToken } = require("../middlewere/VerifyToken");
 
 // Create Challenge
-router.post('/', verifyToken , async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   try {
     const challenge = new Challenge({ ...req.body, createdBy: req.user.id });
     await challenge.save();
@@ -15,9 +15,9 @@ router.post('/', verifyToken , async (req, res) => {
 });
 
 // Fetch All Challenges
-router.get('/', verifyToken, async (req, res) => {
+router.get("/", verifyToken, async (req, res) => {
   try {
-    const challenges = await Challenge.find().populate('createdBy', 'username');
+    const challenges = await Challenge.find().populate("createdBy", "username");
     res.json(challenges);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -25,10 +25,14 @@ router.get('/', verifyToken, async (req, res) => {
 });
 
 // Fetch Single Challenge
-router.get('/:id', verifyToken, async (req, res) => {
+router.get("/:id", verifyToken, async (req, res) => {
   try {
-    const challenge = await Challenge.findById(req.params.id).populate('createdBy', 'username');
-    if (!challenge) return res.status(404).json({ message: 'Challenge not found' });
+    const challenge = await Challenge.findById(req.params.id).populate(
+      "createdBy",
+      "username"
+    );
+    if (!challenge)
+      return res.status(404).json({ message: "Challenge not found" });
     res.json(challenge);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -36,10 +40,11 @@ router.get('/:id', verifyToken, async (req, res) => {
 });
 
 // Join Challenge
-router.post('/:id/join', verifyToken, async (req, res) => {
+router.post("/:id/join", verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.id);
-    if (!challenge) return res.status(404).json({ message: 'Challenge not found' });
+    if (!challenge)
+      return res.status(404).json({ message: "Challenge not found" });
 
     // Add user to participants
     if (!challenge.participants.includes(req.user.id)) {
@@ -53,18 +58,19 @@ router.post('/:id/join', verifyToken, async (req, res) => {
 });
 
 // Delete Challenge
-router.delete('/:id', verifyToken, async (req, res) => {
+router.delete("/:id", verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.id);
-    if (!challenge) return res.status(404).json({ message: 'Challenge not found' });
+    if (!challenge)
+      return res.status(404).json({ message: "Challenge not found" });
 
     // Only creator can delete
     if (challenge.createdBy.toString() !== req.user.id) {
-      return res.status(403).json({ message: 'Unauthorized' });
+      return res.status(403).json({ message: "Unauthorized" });
     }
 
     await challenge.remove();
-    res.json({ message: 'Challenge deleted' });
+    res.json({ message: "Challenge deleted" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

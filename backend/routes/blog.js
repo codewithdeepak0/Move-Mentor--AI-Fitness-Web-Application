@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const {createMulterUpload , processimages} = require("../middlewere/multer.js");
+const {
+  createMulterUpload,
+  processimages,
+} = require("../middlewere/multer.js");
 
 const {
   getAllBlogs,
@@ -8,7 +11,7 @@ const {
   createBlog,
   updateBlog,
   deleteBlog,
-  addCommentToBlog, 
+  addCommentToBlog,
 } = require("../controllers/blogs.js");
 const { verifyToken } = require("../middlewere/VerifyToken.js");
 
@@ -19,14 +22,14 @@ router.get("/", getAllBlogs);
 router.get("/:id", getBlogById);
 
 // Create a new blog (with image upload)
-router.post("/",createMulterUpload(),processimages, createBlog);
+router.post("/", createMulterUpload(), processimages, createBlog);
 
 // Update a blog by ID (with image upload)
-router.patch("/:id",createMulterUpload(),processimages, updateBlog);
+router.patch("/:id", createMulterUpload(), processimages, updateBlog);
 
 // Delete a blog by ID
-router.delete("/:id", verifyToken ,deleteBlog);
+router.delete("/:id", verifyToken, deleteBlog);
 
-router.post("/:id/comments", verifyToken  ,addCommentToBlog);
+router.post("/:id/comments", verifyToken, addCommentToBlog);
 
 module.exports = router;

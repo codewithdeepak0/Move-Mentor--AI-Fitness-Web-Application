@@ -27,21 +27,34 @@ const getTutorialById = async (req, res) => {
 
 // Add a new tutorial
 const addTutorial = async (req, res) => {
-
- 
   try {
-      console.log("this is tutorial method");
-    
-    const tutorialData = req.body.data ? JSON.parse(req.body.data) : null;
+    console.log("this is tutorial method");
 
+    const tutorialData = req.body.data ? JSON.parse(req.body.data) : null;
 
     if (!tutorialData) {
       return res.status(400).json({ error: "Invalid tutorial data" });
     }
 
-    const { title, author, description, content, category, duration, difficulty } = tutorialData;
+    const {
+      title,
+      author,
+      description,
+      content,
+      category,
+      duration,
+      difficulty,
+    } = tutorialData;
 
-    if (!title || !author || !description || !content || !category  || !duration || !difficulty) {
+    if (
+      !title ||
+      !author ||
+      !description ||
+      !content ||
+      !category ||
+      !duration ||
+      !difficulty
+    ) {
       return res.status(400).json({ error: "All fields are required." });
     }
 
@@ -57,13 +70,14 @@ const addTutorial = async (req, res) => {
     });
 
     await newTutorial.save();
-    res.status(201).json({ message: "Tutorial added successfully", tutorial: newTutorial });
-  }  catch (error) {
+    res
+      .status(201)
+      .json({ message: "Tutorial added successfully", tutorial: newTutorial });
+  } catch (error) {
     console.error("Backend error:", error); // Logs the exact issue
     res.status(500).json({ error: error.message || "Internal Server Error" });
   }
 };
-
 
 // Export controllers
 module.exports = {
